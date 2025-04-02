@@ -237,17 +237,14 @@
         }
         
         .section-content {
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 1.5rem;
+            border-top: 1px solid var(--gray-light);
             background-color: white;
+            display: none;
         }
         
         .section-content.active {
-            max-height: 1000px;
-            padding: 1.5rem;
-            border-top: 1px solid var(--gray-light);
+            display: block;
         }
         
         /* Form Elements */
@@ -1757,17 +1754,16 @@
         // Initialize
         updateProgress();
         
-        // Add opening/closing animations to section content
+        // Set initial state of section headers
         sectionHeaders.forEach(header => {
             const sectionId = header.getAttribute('data-section');
             const content = document.getElementById(`section-${sectionId}`);
             
-            // Set initial state
+            // Set initial chevron direction
             if (content.classList.contains('active')) {
                 header.querySelector('i:last-child').classList.replace('fa-chevron-down', 'fa-chevron-up');
             } else {
-                content.style.maxHeight = '0';
-                content.style.padding = '0 1.5rem';
+                header.querySelector('i:last-child').classList.replace('fa-chevron-up', 'fa-chevron-down');
             }
         });
     </script>
